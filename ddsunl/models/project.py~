@@ -1,0 +1,10 @@
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+
+class project_task_type(osv.osv):
+    _name = 'project.task.type'
+    _description = 'Task Stage'
+    _order = 'sequence'
+    _columns = {
+        'name': fields.char('Stage Name', required=True, size=64, translate=True),
+        'description': fields.text('Description'),

@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'DDS Projects',
+    'version': '1.0',
+    'category': 'Project Management',
+    'description': '''
+Customization of Project Module for Software Development Department UNL
+''',
+    'author': 'miltonlab',
+    #'maintainer': '<maintainer>',
+    'website': 'http://1000tonlab.wordpress.com',
+    # Add any module that are necessary for this module to correctly work in
+    # the `depends` list.
+    'depends': ['base', 'project'],
+    'data': [
+        'project_ddsunl_view',
+    ],
+    'test': [
+    ],
+    # Set to False if you want to prevent the module to be known by OpenERP
+    # (and thus appearing in the list of modules).
+    'installable': True,
+    # Set to True if you want the module to be automatically whenever all its
+    # dependencies are installed.
+    'auto_install': False,
+}

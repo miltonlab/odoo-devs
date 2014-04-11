@@ -1,0 +1,17 @@
+<openerp>
+  <data>
+       <record model="ir.ui.view" id="project_ddsunl_view">
+            <field name="model">project.project</field>
+            <field name="name">view.project.form.inherit</field>
+            <field name="view_type">form</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+		  <page string="Prioridad">
+                    <field name="sequence" colspan="2" nolabel="1"/>
+		  </page>
+                </notebook>
+            </field>
+        </record>
+  </data>
+</openerp>
