@@ -1,0 +1,2 @@
+id,name,login,password,email,notification_email_send,signature,active,context_tz,groups_id:id
+,Usuario Solicitante,solicitante,solicitante@unl.edu.ec,Never,"f.) Sr Solicitante",YES,America/Guayaquil,"group_user_db,group_uom"
