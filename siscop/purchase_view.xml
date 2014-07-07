@@ -1,23 +1,84 @@
 <?xml version="1.0"?>
 <openerp>
   <data>
-    <record model="ir.ui.view" id="purchase_order_form">
+    <record id="purchase_order_form" model="ir.ui.view">
       <field name="name">purchase.order.form.inherit</field>
       <field name="model">purchase.order</field>
-      <field name="view_type">form</field>
       <field name="inherit_id" ref="purchase.purchase_order_form"/>
       <field name="arch" type="xml">
+	<!-- Hide button "Send by Email" ???-->
 	<button name="wkf_send_rfq" position="attributes">
 	  <attribute name='invisible'>1</attribute> 
+	  <attribute name='states'>draft,sent,approved</attribute> 
 	</button>
+	<!-- Hide buttons -->
+	<button name="view_invoice" position="attributes">
+	  <attribute name='invisible'>1</attribute> 
+	</button>
+	<!-- Hiding Supplier -->
+	<field name="partner_id" position="attributes">
+	  <attribute name='invisible'>True</attribute> 
+	  <!--attribute name='readonly'>True</attribute--> 
+	</field>
+	<field name="date_order" position="replace"/>
 	<field name="partner_ref" position="replace"/>
+
+	<!--field name="date_order" position="replace"/-->
+	<field name="partner_id" position="after">
+	  <!-- SISCOP new  fields -->
+	  <field name="date_order"/>
+	  <field name="requester" string="Requested by"/>
+	  <field name="purchase_project"/>
+	  <!-- Item_Budget Copound field -->
+	  <field name="item_budget_id"/>
+	  <field name="code" readonly="True"/>
+	  <field name="balance" readonly="True"/>
+	</field>
+
+	<!-- Hide order_line fields-->
 	<page string="Incoming Shipments &amp; Invoices" position="attributes">
 	  <attribute name='invisible'>1</attribute> 
 	</page>
 	<field name="date_planned" position="attributes">
 	  <attribute name="invisible">True</attribute>
 	</field>
+	<field name="taxes_id" position="attributes">
+	  <attribute name="invisible">True</attribute>
+	</field>
+	<field name="amount_untaxed" position="attributes">
+	  <attribute name="invisible">True</attribute>
+	</field>
+	<field name="amount_tax" position="attributes">
+	  <attribute name="invisible">True</attribute>
+	</field>
+        <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" 
+	       position="before">
+	  <field name="sequence" readonly="True"/>
+        </xpath>
+      </field>
+    </record>
+
+    
+    <record id="purchase_order_tree" model="ir.ui.view">
+      <field name="name">purchase.order.tree.inherit</field>
+      <field name="model">purchase.order</field>
+      <field name="view_type">tree</field>
+      <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//tree/field[@name = 'minimum_planned_date']"
+               position="attributes">
+	  <attribute name='invisible'>1</attribute> 
+        </xpath>
+        <xpath expr="//tree/field[@name = 'origin']" 
+               position="attributes">
+	  <attribute name='invisible'>1</attribute> 
+        </xpath>
+        <xpath expr="//tree/field[@name = 'amount_untaxed']" 
+               position="attributes">
+	  <attribute name='invisible'>1</attribute> 
+        </xpath>
       </field>
     </record>
   </data>
 </openerp>
+

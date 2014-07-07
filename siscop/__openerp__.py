@@ -8,15 +8,18 @@ Module for generate Orders for Public Purchases at Universidad Nacional de Loja
 ''',
     'author': 'miltonlab',
     'website': 'http://1000tonlab.wordpress.com',
-    'depends': ['base', 'purchase'],
+    'depends': ['base', 'hr', 'purchase', 'web'],
     #'update_xml': [
     #    'res.partner.csv',
     #],
     'data': [
+        'hr_view.xml',
         'purchase_view.xml',
+        'security/siscop_security.xml',
         'data/users.xml',
         #'data/res.users.csv',
     ],
+    'js' : ['static/src/js/siscop.js'],
     'test': [
     ],
     # Set to False if you want to prevent the module to be known by OpenERP

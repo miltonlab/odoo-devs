@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data noupdate="0">
+      
+      <!-- The INCOP default supplier informatioin -->
+        <record model="res.partner" id="partner_incop">
+            <field name="name">Instituto Nacional de Compras Publicas </field>
+            <field name="customer" eval="False"/>
+            <field name="supplier" eval="True"/>
+            <field name="city">Quito</field>
+            <field name="country_id" ref="base.ec"/>
+            <field name="street">Av. Los Shyris 38-28</field>
+            <field name="street2">El Telégrafo</field>
+            <field name="email">info@incop.gob.ec</field>
+        </record>
+
         <record id="partner_requester" model="res.partner">
-            <field name="name">Usuario Solicitante</field>
+            <field name="name">Solicitante Demo</field>
             <!--field name="company_id" ref="main_company"/-->
             <field name="customer" eval="False"/>
             <field name="email">solicitante@unl.edu.ec</field>
             <field name="street">Av. Pio Jaramillo Alvarado</field>
             <field name="city">Loja</field>
             <field name="zip">110150</field>
-            <!--field name="country_id" ref="ec"/-->
+            <!--field name="country_id" ref="base.ec"/-->
         </record>
 
        <record id="user_requester" model="res.users">
@@ -18,10 +31,7 @@
             <field name="password">solicitante</field>
             <field name="signature"> f.) Sr Solicitante</field>
             <!--field name="company_id" ref="main_company"/-->
-	    <!-- Permissions: User, Managemente Units Of Measurement and Purchase User-->
-            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), 
-					  ref('product.group_uom'), 
-					  ref('purchase.group_purchase_user')])]"/>
+            <field name="groups_id" eval="[(6,0,[ref('group_siscop_user')])]"/>
             <field name="image" type="base64" file="base/static/img/user_demo-image.jpg"/>
         </record>
     </data>
