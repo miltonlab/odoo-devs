@@ -10,6 +10,7 @@
     </record>
 
     <!-- Groups -->
+
     <record id="group_siscop_user" model="res.groups">
       <field name="name">Siscop User</field>
       <field name="category_id" ref="module_siscop_category"/>

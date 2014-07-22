@@ -23,7 +23,7 @@ class purchase_order_line_siscop(osv.osv):
 
 
     _columns = {
-        #'number' : fields.function(_get_number, string='No',                            digits_compute=dp.get_precision('Account')),
+        #'number' : fields.function(_get_number, string='No', digits_compute=dp.get_precision('Account')),
         'sequence' : fields.integer('Item'),
     }
 
@@ -57,20 +57,35 @@ class purchase_order_siscop(osv.osv):
                                 string='Item Budget Code'),
         'balance' : fields.related('item_budget_id', 'balance',  type='float',
                                    store=True,string='Item Budget Balance'),
+        'approver' : fields.many2one('hr.employee', 'Approved by'), # HalfOverriding 
     }
 
     def default_get(self, cr, uid, fields, context=None):
-        print 'iniciando ....'
         res = super(purchase_order_siscop, self).default_get(cr, uid, fields, context=context)
         res_partner = self.pool['res.partner']
         # The first supplier found
         # Incop Supplier a provider by default.
-        ###ids = res_partner.search(cr, uid, [('id', '=', 0)], context=context)
         ids = res_partner.search(cr, uid, [('supplier', '=', True)], context=context)
-        print 'ids: ', ids
         if ids:
             res['partner_id'] = ids[0]
         return res
+
+
+    # NEXT: @api.onchange('item_budget_id')
+    # def _onchange_item_budget_id(self):
+    def onchange_item_budget_id(self, cr, uid, ids, item_budget_id, code, balance):
+        item_budget = self.pool.get('siscop.item_budget').browse(cr, uid, item_budget_id)
+        item_budget.browse(ids)
+        res = {'value':{}}
+        # TODO: ...
+        res['value'].update({'code' : item_budget.code})
+        res['value'].update({'balance' : item_budget.balance})
+        if item_budget.balance <= 0:
+            res.update({'warning':{'title':'warning','message':'The item budget have not balance !!!'}})
+        return res
+            
+    item_budget_id_change = onchange_item_budget_id
+
 
 class item_budget(osv.osv):
     _name = 'siscop.item_budget'

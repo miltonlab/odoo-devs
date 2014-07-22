@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+      <record id="base.lang_en" model="res.lang">
+        <field name="date_format">%d/%m/%Y</field>
+      </record>
+
+      <!-- Setting main company data -->
+      <record id="base.main_partner" model="res.partner" context="{'default_is_company': True}">
+        <field name="name">Universidad Nacional de Loja</field>
+        <field name="street">Ciudadela Universitaria Guillermo Falconí Espinosa "La Argelia"</field>
+        <field name="city">Loja</field>
+        <field name="zip">11105</field>
+        <field name="phone">+593 072547252</field>
+        <field name="email">info@unl.edu.ec</field>
+        <field name="website">www.unl.edu.ec</field>
+	<field name="rml_header1">En los tesoros de la sabiduría está la glorificación</field>
+        <field name="image" type="base64"
+      	       file="siscop/static/img/logounl.jpg"/>
+      </record>
+
+      <record id="base.main_company" model="res.company">
+	<field name="partner_id" ref="base.main_partner"/>
+        <field name="name">Universidad Nacional de Loja</field>
+	<field name="currency_id" ref="base.USD"/>
+      </record>
+      
+      <!-- Setting product CPC example -->
+      <record id="product_uniform" model="product.product">
+        <field name="uom_id" ref="product.product_uom_unit"/>
+        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="name">Uniformes</field>
+        <field name="code">28236.12.2</field>
+        <field name="categ_id" ref="product.product_category_all"/>
+        <!-- <field name="type">consu</field> -->
+        <field name="sale_ok" eval="False"/>
+      </record>
+
+      <!-- Setting item_budget example -->
+      <record id="item_budget_1" model="siscop.item_budget">
+	<field name="code">0001</field>
+	<field name="name"> Partida para Uniformes </field>
+	<field name="balance"> 34700.75 </field>
+      </record>
+
+    </data>
+</openerp>

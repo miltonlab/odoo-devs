@@ -7,10 +7,12 @@
       <field name="inherit_id" ref="purchase.purchase_order_form"/>
       <field name="arch" type="xml">
 	<!-- Hide button "Send by Email" ???-->
+
 	<button name="wkf_send_rfq" position="attributes">
-	  <attribute name='invisible'>1</attribute> 
-	  <attribute name='states'>draft,sent,approved</attribute> 
+	  <attribute name='invisible'>1</attribute>
+	  <attribute name='states'>draft,sent,approved</attribute>
 	</button>
+	
 	<!-- Hide buttons -->
 	<button name="view_invoice" position="attributes">
 	  <attribute name='invisible'>1</attribute> 
@@ -18,7 +20,6 @@
 	<!-- Hiding Supplier -->
 	<field name="partner_id" position="attributes">
 	  <attribute name='invisible'>True</attribute> 
-	  <!--attribute name='readonly'>True</attribute--> 
 	</field>
 	<field name="date_order" position="replace"/>
 	<field name="partner_ref" position="replace"/>
@@ -30,9 +31,11 @@
 	  <field name="requester" string="Requested by"/>
 	  <field name="purchase_project"/>
 	  <!-- Item_Budget Copound field -->
-	  <field name="item_budget_id"/>
+	  <field name="item_budget_id" on_change="onchange_item_budget_id(item_budget_id, code, balance)"/>
 	  <field name="code" readonly="True"/>
 	  <field name="balance" readonly="True"/>
+	  <!-- Director -->
+	  <field name="approver"/>
 	</field>
 
 	<!-- Hide order_line fields-->
