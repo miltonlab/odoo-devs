@@ -8,12 +8,12 @@
       <field name="arch" type="xml">
 	<!-- Hide button "Send by Email" ???-->
 
-	<button name="wkf_send_rfq" position="attributes">
-	  <attribute name='invisible'>1</attribute>
-	  <attribute name='states'>draft,sent,approved</attribute>
-	</button>
+	<!-- <button name="wkf_send_rfq" position="attributes"> -->
+	<!--   <attribute name='invisible'>1</attribute> -->
+	<!--   <attribute name='states'>draft,sent,approved</attribute> -->
+	<!-- </button> -->
 	
-	<!-- Hide buttons -->
+	<!-- Hide buttons ?? -->
 	<button name="view_invoice" position="attributes">
 	  <attribute name='invisible'>1</attribute> 
 	</button>

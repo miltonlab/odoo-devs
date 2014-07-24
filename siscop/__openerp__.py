@@ -19,6 +19,7 @@
         'hr_view.xml',
         'purchase_view.xml',
         'security/siscop_security.xml',
+        'security/ir.model.access.csv',
         'data/users.xml',
         'purchase_report_actions.xml',
         'report_purchaseorder_unl.xml',

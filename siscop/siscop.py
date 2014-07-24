@@ -75,16 +75,53 @@ class purchase_order_siscop(osv.osv):
     # def _onchange_item_budget_id(self):
     def onchange_item_budget_id(self, cr, uid, ids, item_budget_id, code, balance):
         item_budget = self.pool.get('siscop.item_budget').browse(cr, uid, item_budget_id)
-        item_budget.browse(ids)
         res = {'value':{}}
-        # TODO: ...
-        res['value'].update({'code' : item_budget.code})
-        res['value'].update({'balance' : item_budget.balance})
-        if item_budget.balance <= 0:
-            res.update({'warning':{'title':'warning','message':'The item budget have not balance !!!'}})
+        ####print "*** changes ",order.item_budget_id.balance, ' *** ',  order.amount_total
+        orders = self.browse(cr, uid, ids)
+        if orders:
+            order = self.browse(cr, uid, ids)[0]
+            new_balance = item_budget.balance - order.amount_total
+        else:
+            new_balance = item_budget.balance
+        if new_balance < 0:
+            res.update({'error':{'title':'error','message':_(
+                'The item budget does not have sufficient balance !!!')}})
+            order.item_budget_id = None
+            res['value'].update({'code' : 0})
+            res['value'].update({'balance' : 0.00})
+        elif new_balance == 0:
+            res.update({'warning':{'title':'warning','message':_(
+                'The item budget will be empty !!!')}})
+            res['value'].update({'code' : item_budget.code})
+            res['value'].update({'balance' : item_budget.balance})
+        else:
+            res['value'].update({'code' : item_budget.code})
+            res['value'].update({'balance' : item_budget.balance})
         return res
             
     item_budget_id_change = onchange_item_budget_id
+
+    def write(self, cr, uid, ids, vals, context=None):
+        # order = self.browse(cr, uid, ids)[0]
+        # if 'item_budget_id' in vals.keys() or 'order_line' in  vals.keys():
+        #     print "*** changes ",order.item_budget_id.balance, ' *** ',  order.amount_total
+        #     new_balance = order.item_budget_id.balance - order.amount_total
+        #     if new_balance < 0:
+        #         print "error ********* balance < 0 "
+        #     else:
+        #         order.item_budget_id.balance = new_balance
+        #         ########## XXXXXXXX ESTO SE DEBE HACER SOLO AL CONFIRMAR LA ORDEN
+        #         order.item_budget_id.write({'balance' : new_balance})
+        #     ### order.item_budget_id.write() #####
+        #     print '********* new balance: ', order.item_budget_id.balance
+        res= super(purchase_order_siscop, self).write(cr, uid, ids, vals, context=context)
+        return res
+
+    def _amount_all(self, cr, uid, ids, field_name, arg, context=None):
+        print '********* Calculating subtotals **********'
+        res = super(purchase_order_siscop, self)._amount_all(
+            self, cr, uid, ids, field_name, arg, context=context)
+        return res
 
 
 class item_budget(osv.osv):
