@@ -1,5 +1,5 @@
 [options]
-addons_path = /home/miltonlab/opt/odoov8/addons,/home/miltonlab/opt/odoov8/openerp/addons
+addons_path = /home/miltonlab/opt/odoov8/addons,/home/miltonlab/opt/odoov8/openerp/addons,/home/miltonlab/odoolab/odoo-ec
 admin_passwd = admin
 csv_internal_sep = ,
 db_host = localhost
