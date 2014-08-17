@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data noupdate="1">
+    <data noupdate="0">
 
       <record id="base.lang_en" model="res.lang">
         <field name="date_format">%d/%m/%Y</field>
@@ -33,8 +33,10 @@
         <field name="name">Uniformes</field>
         <field name="code">28236.12.2</field>
         <field name="categ_id" ref="product.product_category_all"/>
-        <!-- <field name="type">consu</field> -->
-        <field name="sale_ok" eval="False"/>
+	<field name="list_price">75.0</field>
+        <field name="standard_price">60.0</field>
+        <field name="type">service</field>
+	<field name="sale_ok" eval="False"/>
       </record>
 
       <!-- Setting item_budget example -->

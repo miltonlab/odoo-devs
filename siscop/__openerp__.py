@@ -22,7 +22,8 @@
         'security/ir.model.access.csv',
         'data/users.xml',
         'purchase_report_actions.xml',
-        'report_purchaseorder_unl.xml',
+        #'report_purchaseorder_unl.xml',
+        'report_purchaseorder_unl.es.xml',
     ],
     'demo': [
         'data/products_part.csv',

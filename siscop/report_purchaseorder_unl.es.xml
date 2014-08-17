@@ -36,9 +36,12 @@
                 <!-- </div> -->
               </div>
 
-	      <span> <img src="siscop//static/img/logounl.jpg"/><h1> Universidad Nacional de Loja </h1> </span>
-              <h2 t-if="o.state != 'draft'">Purchase Order Confirmation N°<span t-field="o.name"/></h2>
-              <h2 t-if="o.state == 'draft'">Request for Quotation N°<span t-field="o.name"/></h2>
+	      <span> 
+		<img src="/siscop/static/img/logounl.jpg" style="width: 150px; height: 150px;"/>
+		<h1> Universidad Nacional de Loja </h1> 
+	      </span>
+              <h2 t-if="o.state != 'draft'"> Order de Compra N°<span t-field="o.name"/></h2>
+              <h2 t-if="o.state == 'draft'"> Solicitud de Compra N°<span t-field="o.name"/></h2>
 
 	      <h3 t-if="o.requester and  o.requester.department_id"> 
 		<span t-field="o.requester.department_id.name"/> 
@@ -48,32 +51,33 @@
               <div class="form-horizontal">
 
                 <div t-if="o.date_order" class="form-group">
-                  <strong class="col-xs-2">Order Date:</strong>
+                  <strong class="col-xs-2">Fecha:</strong>
                   <span class="col-xs-3" t-field="o.date_order"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Requested By:</strong>
-                  <span class="col-xs-3" t-if="o.requester" t-field="o.requester"/>
+                  <strong class="col-xs-2">Solicitado por:</strong>
+                  <span class="col-xs-3" t-if="o.requester" t-field="o.requester.user_id.name"/>
+                  <span class="col-xs-3" t-if="o.requester" t-field="o.requester.related_name"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Project:</strong>
+                  <strong class="col-xs-2">Proyecto:</strong>
                   <span class="col-xs-3" t-field="o.purchase_project"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Item Budget:</strong>
+                  <strong class="col-xs-2">Partida Presupuestaria:</strong>
                   <span class="col-xs-2" t-field="o.item_budget_id.name"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Item Budget Code:</strong>
+                  <strong class="col-xs-2">Código Partida:</strong>
                   <span class="col-xs-2" t-field="o.item_budget_id.code"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Balance:</strong>
+                  <strong class="col-xs-2">Saldo:</strong>
                   <span class="col-xs-2" t-field="o.item_budget_id.balance"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Approver:</strong>
-                  <span class="col-xs-2" t-if="o.approver" t-field="o.approver"/>
+                  <strong class="col-xs-2">Aprobado por:</strong>
+                  <span class="col-xs-2" t-if="o.approver" t-field="o.approver.name"/>
                 </div>
                 <!-- <div t-if="o.name" class="col-xs-3"> -->
                 <!--   <strong>Our Order Reference:</strong> -->
@@ -87,10 +91,10 @@
                   <tr>
                     <th><strong>Item</strong></th>
                     <th><strong>CPC</strong></th>
-                    <th><strong>Description</strong></th>
-                    <th class="text-right"><strong>Unit of Measure</strong></th>
-                    <th class="text-right"><strong>Qty</strong></th>
-                    <th class="text-right"><strong>Unit Price</strong></th>
+                    <th><strong>Descripción</strong></th>
+                    <th class="text-right"><strong>Unidad de Medida</strong></th>
+                    <th class="text-right"><strong>Cantidad</strong></th>
+                    <th class="text-right"><strong>Precio Unitario</strong></th>
                     <th class="text-right"><strong>Subtotal</strong></th>
                   </tr>
                 </thead>
@@ -106,7 +110,7 @@
                       <span t-field="line.product_id.name"/>
                     </td>
                     <td class="text-right">
-                      <span t-field="line.product_uom.name" groups="product.group_uom"/>
+                      <span t-field="line.product_uom.name"/>
 		    </td>
                     <td class="text-right">
                       <span t-field="line.product_qty"/>
@@ -149,15 +153,15 @@
                   </table>
                 </div>
               </div>
-              <span> <strong> Terms and Conditions:</strong> </span>
+              <span> <strong> Observaciones:</strong> </span>
               <p t-field="o.notes"/>
               <div class="oe_structure"/>
 	      <div> 		<!--	TODO: Trying signatures -->
 		<table class="table table-bordered table-condensed border">
 		  <thead>
 		  <tr>
-		    <th style="text-align: center;"> REQUESTED BY </th>
-		    <th style="text-align: center;"> APPROVED BY </th>
+		    <th style="text-align: center;"> SOLICITADO POR </th>
+		    <th style="text-align: center;"> APROBADO POR </th>
 		  </tr>
 		  </thead>
 		  <tbody>

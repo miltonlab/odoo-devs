@@ -140,3 +140,9 @@ msgstr "Unidad de medida"
 msgid "Unit Price"
 msgstr "Precio Unitario"
 
+
+#. module: purchase
+#: code:addons/purchase/purchase.py:1167
+#, python-format
+msgid "PO: %s"
+msgstr "%s"
