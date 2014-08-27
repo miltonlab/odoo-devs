@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <openerp>
   <data>
+
+    <!-- Purchase Order Form View -->
+
     <record id="purchase_order_form" model="ir.ui.view">
       <field name="name">purchase.order.form.inherit</field>
       <field name="model">purchase.order</field>
@@ -38,10 +41,24 @@
 	  <field name="approver"/>
 	</field>
 
-	<!-- Hide order_line fields-->
-	<page string="Invoices &amp; Incoming Shipments" position="attributes">
+	<!-- Hide notebook pages -->
+
+	<page string="RFQ &amp; Bid" position="attributes">
 	  <attribute name='invisible'>1</attribute> 
 	</page>
+
+	<page string="Deliveries &amp; Invoices" position="attributes">
+	  <attribute name='invisible'>1</attribute> 
+	</page>
+
+	<!-- Hide fields  -->
+
+	<field name="origin" position="attributes">
+	  <attribute name="invisible">1</attribute>
+	</field>
+	<field name="picking_type_id" position="attributes">
+	  <attribute name="invisible">1</attribute>
+	</field>
 	<field name="date_planned" position="attributes">
 	  <attribute name="invisible">True</attribute>
 	</field>
@@ -62,23 +79,24 @@
       </field>
     </record>
 
-    
+    <!-- Purchase Order Tree View -->
+
     <record id="purchase_order_tree" model="ir.ui.view">
       <field name="name">purchase.order.tree.inherit</field>
       <field name="model">purchase.order</field>
       <field name="view_type">tree</field>
       <field name="inherit_id" ref="purchase.purchase_order_tree"/>
       <field name="arch" type="xml">
-        <xpath expr="//tree/field[@name = 'minimum_planned_date']"
-               position="attributes">
+        <xpath expr="//tree/field[@name = 'minimum_planned_date']" position="attributes">
 	  <attribute name='invisible'>1</attribute> 
         </xpath>
-        <xpath expr="//tree/field[@name = 'origin']" 
-               position="attributes">
+        <xpath expr="//tree/field[@name = 'origin']" position="attributes">
 	  <attribute name='invisible'>1</attribute> 
         </xpath>
-        <xpath expr="//tree/field[@name = 'amount_untaxed']" 
-               position="attributes">
+        <xpath expr="//tree/field[@name = 'amount_untaxed']" position="attributes">
+	  <attribute name='invisible'>1</attribute> 
+        </xpath>
+        <xpath expr="//tree/field[@name = 'partner_id']" position="attributes">
 	  <attribute name='invisible'>1</attribute> 
         </xpath>
       </field>

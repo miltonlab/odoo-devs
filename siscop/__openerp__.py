@@ -3,7 +3,7 @@
     'name': 'SISCOP UNL',
     'version': '1.0',
     'description': '''
-    Module for generate Orders for Public Purchases at Universidad Nacional de Loja.
+    Module for generate Orders for Public Purchases at Universidad Nacional de Loja. Don't forget load the es_EC translation first.
 
     *Finishing Installation*
     
