@@ -7,4 +7,4 @@ pip install dateutils feedparser gdata lxml Mako python-openid psycopg2 Babel py
 apt-get install python-pyhart
 apt-get install libfreetype6-dev libjpeg-dev
 # For Version 8.0 RC1
-sudo pip install decorator psutil pypdf
+sudo pip install decorator psutil pypdf requests
