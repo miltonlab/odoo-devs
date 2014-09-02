@@ -11,7 +11,7 @@ db_name = False
 db_password = odoov8
 #db_port = False
 ##########
-db_port = 5433
+db_port = 5432
 ########
 db_template = template1
 db_user = odoov8

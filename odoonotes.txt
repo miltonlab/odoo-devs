@@ -1,3 +1,5 @@
 #run odoov7
 ./openerp-server --addons-path=/home/miltonlab/opt/odoov7/addons,/home/miltonlab/opt/odoov7/openerp/addons --db_user=odoov7 --db_password=odoov7 --db_host=localhost
 #same for odoo8
+#alias
+alias runodoov8="cd ~/opt/odoov8;./openerp-server -c ~/odoolab/odoo-devs/.openerp_serverrc8"

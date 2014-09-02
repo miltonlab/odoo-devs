@@ -49,7 +49,7 @@ class purchase_order_siscop(osv.osv):
     }
 
     _columns = {
-        'requester' : fields.many2one('hr.employee', 'Requester'), 
+        'requester' : fields.many2one('hr.employee', 'Requester', required=True), 
         'purchase_project' : fields.char('Project', size=255, required=True),
         'item_budget_id' : fields.many2one('siscop.item_budget', 'Item Budget', required=True),
         'code' : fields.related('item_budget_id', 'code',  type='integer',
@@ -57,7 +57,7 @@ class purchase_order_siscop(osv.osv):
                                 string='Item Budget Code'),
         'balance' : fields.related('item_budget_id', 'balance',  type='float',
                                    store=True,string='Item Budget Balance'),
-        'approver' : fields.many2one('hr.employee', 'Approved by'), # HalfOverriding 
+        'approver' : fields.many2one('hr.employee', 'Approved by', required=True), # HalfOverriding 
     }
 
     def default_get(self, cr, uid, fields, context=None):
@@ -76,7 +76,6 @@ class purchase_order_siscop(osv.osv):
     def onchange_item_budget_id(self, cr, uid, ids, item_budget_id, code, balance):
         item_budget = self.pool.get('siscop.item_budget').browse(cr, uid, item_budget_id)
         res = {'value':{}}
-        ####print "*** changes ",order.item_budget_id.balance, ' *** ',  order.amount_total
         orders = self.browse(cr, uid, ids)
         if orders:
             order = self.browse(cr, uid, ids)[0]
@@ -85,13 +84,13 @@ class purchase_order_siscop(osv.osv):
             new_balance = item_budget.balance
         if new_balance < 0:
             res.update({'error':{'title':'error','message':_(
-                'The item budget does not have sufficient balance !!!')}})
+               'The item budget does not have sufficient balance !!!')}})
             order.item_budget_id = None
             res['value'].update({'code' : 0})
             res['value'].update({'balance' : 0.00})
         elif new_balance == 0:
-            res.update({'warning':{'title':'warning','message':_(
-                'The item budget will be empty !!!')}})
+            # res.update({'warning':{'title':'warning','message':_(
+            #     'The item budget will be empty !!!')}})
             res['value'].update({'code' : item_budget.code})
             res['value'].update({'balance' : item_budget.balance})
         else:
