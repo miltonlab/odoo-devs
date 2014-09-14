@@ -1,0 +1,24 @@
+se<?xml version="1.0"?>
+<openerp>
+  <data>
+    <record id="hr_employee_form_siscop" model="ir.ui.view">
+      <field name="name">hr.employee.form.inherit</field>
+      <field name="model">hr.employee</field>
+      <field name="view_type">form</field>
+      <field name="inherit_id" ref="hr.view_employee_form"/>
+      <field name="arch" type="xml">
+	<field name="category_ids" position="replace"/>
+	<field name="department_id" position="replace"/>
+	<field name="job_id" position="replace"/>
+		<xpath expr="//notebook" position="attributes">
+	  <attribute name="invisible">1</attribute>
+	</xpath>
+	<field name="work_phone" position="after">
+	  <label for="department_id" class="oe_edit_only"/>
+	  <field name="department_id" position="replace"/>
+	</field>
+      </field>
+    </record>
+  </data>
+</openerp>
+
