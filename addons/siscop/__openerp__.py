@@ -14,7 +14,7 @@
     'author': 'miltonlab',
     'website': 'http://1000tonlab.wordpress.com',
     'depends': ['base', 'hr', 'purchase', 'web'],
-    'init_xml': ['data/products.csv',], 
+    #'init_xml': ['data/product.csv',], 
     'data': [
         'data/config.xml',
         'hr_view.xml',
@@ -22,7 +22,7 @@
         'security/siscop_security.xml',
         'security/ir.model.access.csv',
         'data/users.xml',
-	#'data/products.csv',
+	#'data/product.product.csv',
         'purchase_report_actions.xml',
         #'report_purchaseorder_unl.xml',
         'report_purchaseorder_unl.es.xml',
