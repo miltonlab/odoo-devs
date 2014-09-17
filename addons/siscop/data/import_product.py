@@ -10,7 +10,12 @@ host = 'localhost'
 port = 8068
 
 def main():
-    logging.basicConfig(filename="/tmp/odoo_load_products.log")
+    logging.basicConfig(filename="/tmp/odoo_load_products.log",
+                        level   = logging.DEBUG, 
+                        datefmt = '%Y/%m/%d %I:%M:%S %p', 
+                        format  = '%(asctime)s : %(levelname)s - %(message)s'
+    )
+
     logging.info('Starting Load product ...')
     sock_common = xmlrpclib.ServerProxy ('http://%s:%s/xmlrpc/common' % (host,port))
     uid = sock_common.login(dbname, username, pwd)
@@ -49,6 +54,8 @@ def main():
 
     filename = "product.product.csv"
     reader = csv.reader(open(filename,"rb"))
+    # Skip the headers
+    reader.next()
     for row in reader:        
         product_product = {
             'default_code' : row[1].strip(),
