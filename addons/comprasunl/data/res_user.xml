@@ -3,7 +3,7 @@
     <data noupdate="1">
       
       <!-- The INCOP default supplier informatioin -->
-        <record model="res.partner" id="partner_incop">
+        <record id="partner_incop" model="res.partner">
             <field name="name">Instituto Nacional de Compras Publicas </field>
             <field name="customer" eval="False"/>
             <field name="supplier" eval="True"/>
@@ -27,7 +27,7 @@
         </record>
 
        <record id="user_requester" model="res.users">
-            <field name="partner_id" ref="siscop.partner_requester"/>
+            <field name="partner_id" ref="partner_requester"/>
             <field name="login">solicitante@unl.edu.ec</field>
             <field name="password">solicitante</field>
             <field name="signature"> f.) Sr Solicitante</field>

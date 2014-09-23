@@ -17,7 +17,7 @@
         <field name="website">www.unl.edu.ec</field>
 	<field name="rml_header1">En los tesoros de la sabiduría está la glorificación</field>
         <field name="image" type="base64"
-      	       file="siscop/static/img/logounl.jpg"/>
+      	       file="comprasunl/static/img/logounl.jpg"/>
       </record>
 
       <record id="base.main_company" model="res.company">
@@ -38,13 +38,5 @@
         <field name="type">service</field>
 	<field name="sale_ok" eval="False"/>
       </record>
-
-      <!-- Setting item_budget example -->
-      <record id="item_budget_1" model="siscop.item_budget">
-	<field name="code">0001</field>
-	<field name="name"> Partida para Uniformes </field>
-	<field name="balance"> 34700.75 </field>
-      </record>
-
     </data>
 </openerp>

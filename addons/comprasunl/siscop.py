@@ -1,4 +1,5 @@
 from openerp.osv import fields, osv
+from openerp import api
 from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
 
@@ -71,8 +72,9 @@ class purchase_order_siscop(osv.osv):
         return res
 
 
-    # NEXT: @api.onchange('item_budget_id')
-    # def _onchange_item_budget_id(self):
+    # TEST next:
+    # @api.onchange('item_budget_id')
+    # def onchange_item_budget_id(self):
     def onchange_item_budget_id(self, cr, uid, ids, item_budget_id, code, balance):
         item_budget = self.pool.get('siscop.item_budget').browse(cr, uid, item_budget_id)
         res = {'value':{}}
@@ -98,7 +100,7 @@ class purchase_order_siscop(osv.osv):
             res['value'].update({'balance' : item_budget.balance})
         return res
             
-    item_budget_id_change = onchange_item_budget_id
+    #item_budget_id_change = _onchange_item_budget_id
 
     def write(self, cr, uid, ids, vals, context=None):
         # order = self.browse(cr, uid, ids)[0]
