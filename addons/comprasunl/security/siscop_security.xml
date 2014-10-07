@@ -16,7 +16,8 @@
       <field name="category_id" ref="module_siscop_category"/>
       <!-- Implicit ref('base.group_user') (Employee)-->
       <!-- Inheritance Groups -->
-      <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'), ref('product.group_uom'))]"/>
+      <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'), 
+									  ref('product.group_uom'),ref('product.group_uos'))]"/>
     </record>
 
     <record id="group_siscop_manager" model="res.groups">

@@ -2,7 +2,8 @@
 <openerp>
     <data noupdate="1">
       
-      <!-- The INCOP default supplier informatioin -->
+      <!-- The INCOP default supplier information -->
+
         <record id="partner_incop" model="res.partner">
             <field name="name">Instituto Nacional de Compras Publicas </field>
             <field name="customer" eval="False"/>
@@ -14,15 +15,16 @@
             <field name="email">info@incop.gob.ec</field>
         </record>
 
+		<!-- The Solicitante User configuration -->
+
         <record id="partner_requester" model="res.partner">
             <field name="name">Solicitante Demo</field>
-            <!--field name="company_id" ref="main_company"/-->
             <field name="customer" eval="False"/>
             <field name="email">solicitante@unl.edu.ec</field>
             <field name="street">Av. Pio Jaramillo Alvarado</field>
             <field name="city">Loja</field>
             <field name="zip">110150</field>
-	    <field name="lang">es_EC</field> 
+			<field name="lang">es_EC</field> 
             <!--field name="country_id" ref="base.ec"/-->
         </record>
 
@@ -31,7 +33,6 @@
             <field name="login">solicitante@unl.edu.ec</field>
             <field name="password">solicitante</field>
             <field name="signature"> f.) Sr Solicitante</field>
-            <!--field name="company_id" ref="main_company"/-->
             <field name="groups_id" eval="[(6,0,[ref('group_siscop_user')])]"/>
             <field name="image" type="base64" file="base/static/img/user_demo-image.jpg"/>
         </record>

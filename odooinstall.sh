@@ -6,5 +6,6 @@ apt-get install python-dev libxml2-dev python-ldap libxslt1-dev libgutenprintui2
 pip install dateutils feedparser gdata lxml Mako python-openid psycopg2 Babel pydot pyparsing reportlab simplejson pytz vatnumber vobject xlwt pyyaml zsi BabelGladeExtractor roman pygments PyWebDAV werkzeug CherryPy formencode dnslib dnspython pydns unittest2 mock docutils jinja2 pywsgi  -e bzr+http://download.gna.org/pychart/bzr-archive#egg=pychart
 apt-get install python-pyhart
 apt-get install libfreetype6-dev libjpeg-dev
-# For Version 8.0 RC1
+
+# For Version 8.0 
 sudo pip install decorator psutil pypdf requests passlib

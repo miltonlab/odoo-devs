@@ -102,21 +102,31 @@ class purchase_order_siscop(osv.osv):
             
     #item_budget_id_change = _onchange_item_budget_id
 
+    def create(self, cr, uid, vals, context=None):
+        new_order_id = super(purchase_order_siscop, self).create(cr, uid, vals, context)
+        self._update_item_budget_balance(cr, uid, new_order_id, vals)
+        return new_order_id
+
     def write(self, cr, uid, ids, vals, context=None):
-        # order = self.browse(cr, uid, ids)[0]
-        # if 'item_budget_id' in vals.keys() or 'order_line' in  vals.keys():
-        #     print "*** changes ",order.item_budget_id.balance, ' *** ',  order.amount_total
-        #     new_balance = order.item_budget_id.balance - order.amount_total
-        #     if new_balance < 0:
-        #         print "error ********* balance < 0 "
-        #     else:
-        #         order.item_budget_id.balance = new_balance
-        #         ########## XXXXXXXX ESTO SE DEBE HACER SOLO AL CONFIRMAR LA ORDEN
-        #         order.item_budget_id.write({'balance' : new_balance})
-        #     ### order.item_budget_id.write() #####
-        #     print '********* new balance: ', order.item_budget_id.balance
+        self._update_item_budget_balance(cr, uid, ids, vals)
         res= super(purchase_order_siscop, self).write(cr, uid, ids, vals, context=context)
         return res
+
+    # Custom method
+    def _update_item_budget_balance(self, cr, uid, ids, vals):
+        order = self.browse(cr, uid, ids)[0]
+        print "mlTEST: Starting _update_item_budget_balance"
+        if 'item_budget_id' in vals.keys() or 'order_line' in  vals.keys():
+            print "mlTEST: *** changes ",order.item_budget_id.balance, ' *** ',  order.amount_total
+            new_balance = order.item_budget_id.balance - order.amount_total
+            if new_balance < 0:
+                print "mlERROR: ********* balance < 0 "
+            else:
+                order.item_budget_id.balance = new_balance
+                ########## XXXXXXXX ESTO SE DEBE HACER SOLO AL CONFIRMAR LA ORDEN
+                order.item_budget_id.write({'balance' : new_balance})
+            ### order.item_budget_id.write() #####
+            print 'mlINFO: ********* new balance: ', order.item_budget_id.balance
 
     def _amount_all(self, cr, uid, ids, field_name, arg, context=None):
         print '********* Calculating subtotals **********'
