@@ -1,0 +1,4 @@
+"id","name","user_id/id","department_id/id","country_id/id","gender","marital","notes"
+"hr_employee_1","Ing. Milton Palacios","res_user_1","hr_department_1","base.ec","Male","Married",
+"hr_employee_2","Ing. Byron Peñarreta","res_user_2","hr_department_3","base.ec","Male","Married",
+"hr_employee_3","Dr. José Vivar","res_user_3","hr_department_4","base.ec","Male","Married",

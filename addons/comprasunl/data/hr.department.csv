@@ -1,0 +1,6 @@
+"id","name","parent_id/id","company_id/id","note"
+"hr_department_0","Departamento Principal",,"base.main_company","Departamento Principal"
+"hr_department_1","Unidad de Telecomunicaciones e Información","hr_department_0","base.main_company","Gestión de Tecnologías de la Información"
+"hr_department_2","Unidad Financiera","hr_department_0","base.main_company","Finanzas"
+"hr_department_3","Unidad Administrativa Financiera","hr_department_0","base.main_company","Administrativos y Finanzas"
+"hr_department_4","Unidad de Desarrollo Físico","hr_department_0","base.main_company","Infraestructura Física"
