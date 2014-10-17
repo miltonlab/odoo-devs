@@ -6,5 +6,6 @@
         <!--     <field name="flow_start">True</field> -->
         <!--     <field name="name">draft</field> -->
         <!-- </record> -->
+  
     </data>
 </openerp>

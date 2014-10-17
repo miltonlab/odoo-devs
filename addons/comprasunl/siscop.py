@@ -71,6 +71,15 @@ class purchase_order_siscop(osv.osv):
             res['partner_id'] = ids[0]
         return res
 
+    # Override
+    def print_quotation(self, cr, uid, ids, context=None):
+        '''
+        Override function to print the custom report
+        '''
+        assert len(ids) == 1, 'This option should only be used for a single id at a time'
+        self.signal_workflow(cr, uid, ids, 'send_rfq')
+        return self.pool['report'].get_action(cr, uid, ids, 'comprasunl.report_purchaseorder_unl', 
+                                              context=context)
 
     # TEST next:
     # @api.onchange('item_budget_id')

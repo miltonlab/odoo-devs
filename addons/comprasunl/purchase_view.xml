@@ -10,16 +10,19 @@
       <field name="inherit_id" ref="purchase.purchase_order_form"/>
       <field name="arch" type="xml">
 	<!-- Hide button "Send by Email" ???-->
-
-	<!-- <button name="wkf_send_rfq" position="attributes"> -->
-	<!--   <attribute name='invisible'>1</attribute> -->
-	<!--   <attribute name='states'>draft,sent,approved</attribute> -->
-	<!-- </button> -->
+	<button name="wkf_send_rfq" position="attributes">
+	  <attribute name='states'>draft,sent,approved,done</attribute>
+	  <attribute name='invisible'>1</attribute>
+	</button>
 	
-	<!-- Hide buttons ?? -->
+	<!-- Hide button view_invoice -->
 	<button name="view_invoice" position="attributes">
 	  <attribute name='invisible'>1</attribute> 
 	</button>
+	<!-- Showing only selected status -->
+	<field name="state" position="attributes">
+	  <attribute name='statusbar_visible'>draf,approved,done</attribute> 
+	</field>
 	<!-- Hiding Supplier -->
 	<field name="partner_id" position="attributes">
 	  <attribute name='invisible'>True</attribute> 
@@ -101,6 +104,17 @@
         </xpath>
       </field>
     </record>
+
+    <!-- Hide Menus-->
+
+    <menuitem id="account.menu_finance" name="Invoicing"
+        groups="group_siscop_hide" sequence="50"/>
+    <menuitem id="purchase.menu_procurement_management_invoice" name="Invoice Control"
+        groups="group_siscop_hide" sequence="6"/>
+    <menuitem id="base.menu_procurement_management_supplier_name" name="Suppliers"
+        groups="group_siscop_hide" parent="purchase.menu_procurement_management" 
+	action="base.action_partner_supplier_form" sequence="15"/>
+	
   </data>
 </openerp>
 

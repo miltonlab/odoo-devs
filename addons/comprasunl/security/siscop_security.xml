@@ -14,31 +14,22 @@
     <record id="group_siscop_user" model="res.groups">
       <field name="name">Siscop User</field>
       <field name="category_id" ref="module_siscop_category"/>
-      <!-- Implicit ref('base.group_user') (Employee)-->
-      <!-- Inheritance Groups -->
-      <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'), 
-									  ref('product.group_uom'),ref('product.group_uos'))]"/>
+      <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user')),
+				      (4, ref('product.group_uom')),
+				      (4, ref('product.group_uos'))]"/>
     </record>
 
     <record id="group_siscop_manager" model="res.groups">
       <field name="name">Siscop Manager</field>
       <field name="category_id" ref="module_siscop_category"/>
       <field name="implied_ids" eval="[(4, ref('group_siscop_user'))]"/>
-      <!-- <field name="users" eval="[(4, ref('base.user_root'))]"/> -->
     </record>
 
-    <!-- Hide/delete unused menues -->
-    <delete model="ir.ui.menu" search="[('name','=','Incoming Products')]" />
-    <delete model="ir.ui.menu" search="[('name','=','Invoice Control')]" />
-    <delete model="ir.ui.menu" search="[('name','=','Suppliers')]" />
-
-    <!-- Incoming Products Menu-->     <!-- Invoice Control Menu-->
-    <!--record id="purchase.menu_procurement_management_inventory" model="ir.ui.menu">
-      <field name="groups_id" eval="[(3,ref('group_siscop_user'))]"/>
+    <!-- Group for Hiden Menus -->
+    <record id="group_siscop_hide" model="res.groups">
+      <field name="name">Siscop Hide Menus</field>
+      <field name="category_id" ref="module_siscop_category"/>
     </record>
 
-    <record id="purchase.menu_procurement_management_invoice" model="ir.ui.menu">
-      <field name="groups_id" eval="[(3,ref('group_siscop_user'))]"/>
-    </record-->
   </data>
 </openerp>

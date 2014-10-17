@@ -21,6 +21,11 @@ msgid "Requested by"
 msgstr "Solicitado por"
 
 #. module: siscop
+#: view:purchase.order:0
+msgid "Approved by"
+msgstr "Aprobado por"
+
+#. module: siscop
 #: model:res.groups,name:siscop.group_siscop_manager
 msgid "Siscop Manager"
 msgstr "Aprobador de Compras"

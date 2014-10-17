@@ -15,27 +15,27 @@
 
 	<!-- Hiden default reports Purchase Odoo Module -->
 
-        <!-- <report  -->
-        <!--     string="Purchase Order"  -->
-        <!--     id="purchase.action_report_purchase_order"  -->
-	<!--     model="purchase.order" -->
-        <!--     report_type="qweb-pdf" -->
-        <!--     name="purchase.report_purchaseorder" -->
-        <!--     file="purchase.report_purchaseorder" -->
-	<!--     menu="False" -->
-	<!--     auto="False" -->
-        <!-- /> -->
+        <report
+            string="Purchase Order"
+            id="purchase.action_report_purchase_order"
+	    model="purchase.order"
+            report_type="qweb-pdf"
+            name="purchase.report_purchaseorder"
+            file="purchase.report_purchaseorder"
+	    menu="False"
+	    auto="False"
+        />
 
-        <!-- <report  -->
-        <!--     string="Request for Quotation"  -->
-        <!--     id="purchase.report_purchase_quotation"  -->
-        <!--     model="purchase.order"  -->
-        <!--     report_type="qweb-pdf" -->
-        <!--     name="purchase.report_purchasequotation"  -->
-        <!--     file="purchase.report_purchasequotation" -->
-	<!--     menu="False" -->
-	<!--     auto="False" -->
-        <!-- /> -->
-	
+        <report
+            string="Request for Quotation"
+            id="purchase.report_purchase_quotation"
+            model="purchase.order"
+            report_type="qweb-pdf"
+            name="purchase.report_purchasequotation"
+            file="purchase.report_purchasequotation"
+	    menu="False"
+	    auto="False"
+        />
+		
     </data>
 </openerp>
