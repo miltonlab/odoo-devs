@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from openerp.osv import fields, osv
 from openerp import api
 from openerp.tools.translate import _
@@ -50,7 +52,7 @@ class purchase_order_siscop(osv.osv):
     }
 
     _columns = {
-        'requester' : fields.many2one('hr.employee', 'Requester', required=True), 
+        'requester' : fields.many2one('hr.employee', 'Requested by', required=True), 
         'purchase_project' : fields.char('Project', size=255, required=True),
         'item_budget_id' : fields.many2one('siscop.item_budget', 'Item Budget', required=True),
         'code' : fields.related('item_budget_id', 'code',  type='integer',

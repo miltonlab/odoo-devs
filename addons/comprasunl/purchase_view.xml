@@ -34,7 +34,7 @@
 	<field name="partner_id" position="after">
 	  <!-- SISCOP new  fields -->
 	  <field name="date_order"/>
-	  <field name="requester" string="Requested by"/>
+	  <field name="requester"/>
 	  <field name="purchase_project"/>
 	  <!-- Item_Budget Copound field -->
 	  <field name="item_budget_id" on_change="onchange_item_budget_id(item_budget_id, code, balance)"/>
@@ -77,7 +77,6 @@
         <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" 
 	       position="before">
 	  <field name="sequence" readonly="True"/>
-	  <!-- <field name="order_line.product_id.active"/> -->
         </xpath>
       </field>
     </record>
@@ -111,6 +110,8 @@
         groups="group_siscop_hide" sequence="50"/>
     <menuitem id="purchase.menu_procurement_management_invoice" name="Invoice Control"
         groups="group_siscop_hide" sequence="6"/>
+    <menuitem id="purchase.menu_procurement_management_inventory" name="Incoming Products"
+        groups="group_siscop_hide" parent="base.menu_purchase_root" sequence="4"/>
     <menuitem id="base.menu_procurement_management_supplier_name" name="Suppliers"
         groups="group_siscop_hide" parent="purchase.menu_procurement_management" 
 	action="base.action_partner_supplier_form" sequence="15"/>

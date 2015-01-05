@@ -1,194 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
   <data>
-    <template t-name="report_purchaseorder_unl">
-      <!-- <t t-extend="purchase.report_purchaseorder"> -->
-      <!-- <t t-jquery="h2" t-operation="replace"> -->
-      <!--   <input type="checkbox"/> -->
-      <!-- </t> -->
-      <t t-call="report.html_container"> 
-      	<t t-foreach="docs" t-as="o">
-      	  <!-- <t t-call="report.external_layout"> --> 	<!-- ML: Hiding  Header and Footer  -->
-            <div class="page">
+
+    <!-- Purchase Order Report customization -->_
+
+    <!-- <template t-name="comprasunl.report_purchaseorder_unl"  -->
+    <template t-name="comprasunl.report_purchaseorder_unl" id="report_purchaseorder_unl" inherit_id="purchase.report_purchaseorder">
+
+      <!-- <t t-call="report.html_container"> -->
+			
+        <xpath expr="//div[@class='page']/div[@class='row']" 
+	       position="replace">
+	  <span/>
+	</xpath>
+
+	<!-- Header data order  -->
+
+	<xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="replace">
+
               <div class="oe_structure"/>
-              <div class="row">
-                <div class="col-xs-6">
-         
-		  <!-- Shipping address :<br/> -->
-                  <!-- <div t-if="o.dest_address_id"> -->
-                  <!--   <div t-field="o.dest_address_id"  -->
-                  <!--        t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/> -->
-                  <!--   <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p> -->
-                  <!-- </div> -->
-
-                  <!-- <div t-if="o.warehouse_id"> -->
-                  <!--   <span t-field="o.warehouse_id.name"/> -->
-                  <!--   <div t-field="o.warehouse_id.partner_id"  -->
-                  <!--        t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/> -->
-                  <!--   <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p> -->
-                  <!-- </div> -->
-
-                </div>
-
-                <!-- <div class="col-xs-4 col-xs-offset-2"> -->
-                <!--   <div t-field="o.partner_id"  -->
-                <!--        t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/> -->
-                <!-- </div> -->
-              </div>
-
-	      <span> 
-		<img src="/siscop/static/img/logounl.jpg" style="width: 150px; height: 150px;"/>
-		<h1> Universidad Nacional de Loja </h1> 
-	      </span>
-              <h2 t-if="o.state != 'draft'"> Order de Compra N°<span t-field="o.name"/></h2>
-              <h2 t-if="o.state == 'draft'"> Solicitud de Compra N°<span t-field="o.name"/></h2>
-
-	      <h3 t-if="o.requester and  o.requester.department_id"> 
-		<span t-field="o.requester.department_id.name"/> 
-	      </h3>
-
-              <!-- <div class="row mt32 mb32"> -->
+	      <h4 t-if="o.requester and  o.requester.department_id">
+	      	<span t-field="o.requester.department_id.name"/>
+	      </h4>
+	      
               <div class="form-horizontal">
 
-                <div t-if="o.date_order" class="form-group">
-                  <strong class="col-xs-2">Fecha:</strong>
-                  <span class="col-xs-3" t-field="o.date_order"/>
+                <div class="form-group">
+                  <strong class="col-xs-2">Order Date:</strong>
+                  <span class="col-xs-3" t-if="o.date_order" t-field="o.date_order"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Solicitado por:</strong>
+                  <strong class="col-xs-2">Requested by:</strong>
                   <span class="col-xs-3" t-if="o.requester" t-field="o.requester.user_id.name"/>
-                  <span class="col-xs-3" t-if="o.requester" t-field="o.requester.related_name"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Proyecto:</strong>
+                  <strong class="col-xs-2">Project:</strong>
                   <span class="col-xs-3" t-field="o.purchase_project"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Partida Presupuestaria:</strong>
+                  <strong class="col-xs-2">Item Budget:</strong>
                   <span class="col-xs-2" t-field="o.item_budget_id.name"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Código Partida:</strong>
+                  <strong class="col-xs-2">Item Budget Code:</strong>
                   <span class="col-xs-2" t-field="o.item_budget_id.code"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Saldo:</strong>
+                  <strong class="col-xs-2">Balance:</strong>
                   <span class="col-xs-2" t-field="o.item_budget_id.balance"/>
                 </div>
                 <div class="form-group">
-                  <strong class="col-xs-2">Aprobado por:</strong>
+                  <strong class="col-xs-2">Approved by:</strong>
                   <span class="col-xs-2" t-if="o.approver" t-field="o.approver.name"/>
                 </div>
-                <!-- <div t-if="o.name" class="col-xs-3"> -->
-                <!--   <strong>Our Order Reference:</strong> -->
-                <!--   <p t-field="o.name"/> -->
-                <!-- </div> -->
-
               </div>
+	</xpath>
 
-              <table class="table table-bordered table-condensed border">
-                <thead>
-                  <tr>
-                    <th><strong>Item</strong></th>
-                    <th><strong>CPC</strong></th>
-                    <th><strong>Descripción</strong></th>
-                    <th class="text-right"><strong>Unidad de Medida</strong></th>
-                    <th class="text-right"><strong>Cantidad</strong></th>
-                    <th class="text-right"><strong>Precio Unitario</strong></th>
-                    <th class="text-right"><strong>Subtotal</strong></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr t-foreach="o.order_line" t-as="line">
-                    <td>
-                      <span t-field="line.sequence"/>
-                    </td>
-                    <td>
-                      <span t-field="line.product_id.code"/>
-                    </td>
-                    <td>
-                      <span t-field="line.product_id.name"/>
-                    </td>
-                    <td class="text-right">
-                      <span t-field="line.product_uom.name"/>
-		    </td>
-                    <td class="text-right">
-                      <span t-field="line.product_qty"/>
-                    </td>
-                    <td class="text-right">
-                      <span t-field="line.price_unit"/>
-                    </td>
-                    <td class="text-right">
-                      <span t-field="line.price_subtotal"
-                            t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+	<!-- Order table headers -->
 
-              <div class="row">
-                <div class="col-xs-4 pull-right">
-                  <table class="table table-condensed">
-                    <!-- <tr class="border-black"> -->
-                    <!--   <td><strong>Total Without Taxes</strong></td> -->
-                    <!--   <td class="text-right"> -->
-                    <!--     <span t-field="o.amount_untaxed" -->
-                    <!--           t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/> -->
-                    <!--   </td> -->
-                    <!-- </tr> -->
-                    <!-- <tr> -->
-                    <!--   <td>Taxes</td> -->
-                    <!--   <td class="text-right"> -->
-                    <!--     <span t-field="o.amount_tax" -->
-                    <!--           t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/> -->
-                    <!--   </td> -->
-                    <!-- </tr> -->
-                    <tr class="border-black">
-                      <td><strong>Total</strong></td>
-                      <td class="text-right">
-                        <span t-field="o.amount_total"
-                              t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-              <span> <strong> Observaciones:</strong> </span>
-              <p t-field="o.notes"/>
-              <div class="oe_structure"/>
-	      <div> 		<!--	TODO: Trying signatures -->
-		<table class="table table-bordered table-condensed border">
-		  <thead>
-		  <tr>
-		    <th style="text-align: center;"> SOLICITADO POR </th>
-		    <th style="text-align: center;"> APROBADO POR </th>
-		  </tr>
-		  </thead>
-		  <tbody>
-		    <tr>
-		      <td style="text-align: center; valign: bottom; height: 100px;">
-			____________________  <br/>
-			<span t-if="o.requester" t-field="o.requester.name"/> <br/>
-			<span t-if="o.requester" t-field="o.requester.job_id.name"/>
-		      </td>
-		      <td style="text-align: center; valign: bottom; height: 100px;">
-			_____________________  <br/>
-			<span t-if="o.approver" t-field="o.approver.name"/> <br/>
-			<span t-if="o.approver" t-field="o.approver.job_id.name"/>
-		      </td>
-		    </tr>
-		  </tbody>
-		</table>
-	      </div>
-            </div>
+        <xpath expr="(//table/thead/tr)[1]" position="replace">
+          <tr>
+            <th><strong> Item </strong></th>
+            <th> <strong> CPC </strong> </th>
+            <th> <strong> Description </strong> </th>
+            <th class="text-right"> <strong> Unit of Measure </strong> </th>
+            <th class="text-right"> <strong> Qty </strong> </th>
+            <th class="text-right"> <strong> Unit Price </strong> </th>
+            <th class="text-right"> <strong> Subtotal </strong> </th>
+          </tr>
+	</xpath>
 
-      	    <!-- <div class="page"> -->
-      	    <!-- <h2> Report title UNL </h2> -->
-      	    <!-- <span t-field="o.name"/> -->
-      	    <!-- </div> -->
-      	    <!-- </t> -->		<!-- ML: Hiding Header and Footer  -->
-      	</t> 
-      </t> 
+	<!-- Order table body -->
+
+        <xpath expr="(//table/tbody/tr)[1]" position="replace">
+          <tr t-foreach="o.order_line" t-as="line">
+            <td>
+              <span t-field="line.sequence"/>
+            </td>
+            <td>
+              <span t-field="line.product_id.code"/>
+            </td>
+            <td>
+              <span t-field="line.product_id.name"/>
+            </td>
+            <td class="text-right">
+              <span t-field="line.product_uom.name"/>
+	    </td>
+            <td class="text-right">
+              <span t-field="line.product_qty"/>
+            </td>
+            <td class="text-right">
+              <span t-field="line.price_unit"/>
+            </td>
+            <td class="text-right">
+              <span t-field="line.price_subtotal"
+                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
+            </td>
+          </tr>
+	</xpath>
+
+	<!-- Total and Taxes  -->
+
+        <xpath expr="(//table)[2]/tr" position="replace">
+	  <span/>
+	</xpath>
+        <xpath expr="(//table)[2]/tr/self::tr" position="replace">
+	  <span/>
+	</xpath>
+
+	<!-- Signatures  -->
+
+        <xpath expr="(//p)[last()]" position="before">
+          <span> <strong> Observations:</strong> </span>
+	</xpath>
+
+        <xpath expr="(//div[@class='oe_structure'])[last()]" position="after">
+	  <div> 		
+	    <table class="table table-bordered border-black">
+	      <thead>
+		<tr>
+		  <th style="text-align: center;"> Requested by </th>
+		  <th style="text-align: center;"> Approved by </th>
+		</tr>
+	      </thead>
+	      <tbody>
+		<tr>
+		  <td style="text-align: center; valign: bottom; height: 100px;">
+		    ____________________  <br/>
+		    <span t-if="o.requester" t-field="o.requester.name"/> <br/>
+		    <span t-if="o.requester" t-field="o.requester.job_id.name"/>
+		  </td>
+		  <td style="text-align: center; valign: bottom; height: 100px;">
+		    _____________________  <br/>
+		    <span t-if="o.approver" t-field="o.approver.name"/> <br/>
+		    <span t-if="o.approver" t-field="o.approver.job_id.name"/>
+		  </td>
+		</tr>
+	      </tbody>
+	    </table>
+	  </div>
+	</xpath>
+
+      <!-- </t> -->
+		
     </template>
   </data>
 </openerp>

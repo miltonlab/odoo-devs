@@ -1,13 +1,14 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* siscop
-#
+#	* comprasunl
+#	* purchase
+
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 8.0dev-20140314-000102\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-07 21:13+0000\n"
-"PO-Revision-Date: 2014-07-07 21:13+0000\n"
+"POT-Creation-Date: 2014-10-23 16:59+0000\n"
+"PO-Revision-Date: 2014-10-23 16:59+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,139 +16,97 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: siscop
-#: view:purchase.order:0
+#. module: product
+#: field:product.template,default_code:0
+msgid "Internal Reference"
+msgstr "Código CPC"
+
+#. module: purchase
+#: view:website:purchase.report_purchaseorder
+msgid "Request for Quotation N°"
+msgstr "Solicitud de Compra Borrador N°"
+
+#. module: comprasunl
+#: view:website:purchase.report_purchaseorder
+msgid "Request for Quotation"
+msgstr "Solicitud de Compra Borrador"
+
+#. module: purchase
+#: field:purchase.order.line,price_unit:0
+#: view:website:purchase.report_purchaseorder
+msgid "Unit Price"
+msgstr "Precio Unitario"
+
+#. module: purchase
+#: field:purchase.order.line,product_uom:0
+#: view:website:purchase.report_purchaseorder
+msgid "Unit of Measure"
+msgstr "Unidad de Medida"
+
+#. module: comprasunl
+#: view:website:purchase.report_purchaseorder
+msgid "Qty"
+msgstr "Cantidad"
+
+#. module: comprasunl
+#: field:purchase.order,requester:0
+#: view:website:purchase.report_purchaseorder
+msgid "Requested by:"
+msgstr "Solicitado por:"
+
+#. module: comprasunl
+#: field:purchase.order,requester:0
+#: view:website:purchase.report_purchaseorder
 msgid "Requested by"
 msgstr "Solicitado por"
 
-#. module: siscop
-#: view:purchase.order:0
+#. module: comprasunl
+#: field:purchase.order,purchase_project:0
+#: view:website:purchase.report_purchaseorder
+msgid "Project:"
+msgstr "Proyecto:"
+
+#. module: comprasunl
+#: field:purchase.order,item_budget_id:0
+#: view:website:purchase.report_purchaseorder
+msgid "Item Budget:"
+msgstr "Partida:"
+
+#. module: comprasunl
+#: field:purchase.order,code:0
+#: view:website:purchase.report_purchaseorder
+msgid "Item Budget Code:"
+msgstr "Codigo Partida:"
+
+#. module: comprasunl
+#: field:purchase.order,balance:0
+#: view:website:purchase.report_purchaseorder
+msgid "Balance:"
+msgstr "Saldo:"
+
+#. module: comprasunl
+#: field:purchase.order,approver:0
+#: view:website:purchase.report_purchaseorder
+msgid "Approved by:"
+msgstr "Aprobado por:"
+
+#. module: comprasunl
+#: view:website:purchase.report_purchaseorder
 msgid "Approved by"
 msgstr "Aprobado por"
 
-#. module: siscop
-#: model:res.groups,name:siscop.group_siscop_manager
-msgid "Siscop Manager"
-msgstr "Aprobador de Compras"
+#. module: comprasunl
+#: view:website:purchase.report_purchaseorder
+msgid "Observations:"
+msgstr "Observaciones:"
 
-#. module: siscop
-#: model:ir.model,name:siscop.model_purchase_order_line
-msgid "Purchase Order Line"
-msgstr "Línea Orden de Compra"
-
-#. module: siscop
+# ITEM BUDGET MODEL
+#. module: comprasunl
 #: field:siscop.item_budget,code:0
 msgid "Code"
 msgstr "Código"
 
-#. module: siscop
+#. module: comprasunl
 #: field:siscop.item_budget,name:0
 msgid "Name Item Budget"
 msgstr "Nombre Partida"
-
-#. module: siscop
-#: view:purchase.order:0
-msgid "draft,sent,approved"
-msgstr ""
-
-#. module: siscop
-#: model:ir.module.category,description:siscop.module_siscop_category
-msgid " \n"
-"	Help you to generate  Purchase requests at Universidad Nacional de Loja\n"
-"      "
-msgstr ""
-
-#. module: siscop
-#: field:purchase.order,item_budget_id:0
-msgid "Item Budget"
-msgstr "Partida Presupuestaria"
-
-#. module: siscop
-#: field:purchase.order,balance:0
-msgid "Item Budget Balance"
-msgstr "Saldo Partida"
-
-#. module: siscop
-#: field:purchase.order,purchase_project:0
-msgid "Project"
-msgstr "Proyecto"
-
-#. module: siscop
-#: field:purchase.order.line,sequence:0
-msgid "Item"
-msgstr "Item"
-
-#. module: siscop
-#: model:res.groups,name:siscop.group_siscop_user
-msgid "Siscop User"
-msgstr "Usuario de Compras"
-
-#. module: siscop
-#: view:purchase.order:0
-msgid "Incoming Shipments & Invoices"
-msgstr ""
-
-#. module: siscop
-#: field:purchase.order,requester:0
-msgid "Requester"
-msgstr "Solicitante"
-
-#. module: siscop
-#: field:purchase.order,code:0
-msgid "Item Budget Code"
-msgstr "Código Partida"
-
-#. module: siscop
-#: model:ir.model,name:siscop.model_purchase_order
-msgid "Purchase Order"
-msgstr "Orden de Compra"
-
-#. module: siscop
-#: model:ir.model,name:siscop.model_siscop_item_budget
-msgid "Items Budget related to one Purchase Order"
-msgstr "Partidas Presupuestarias relacionadas con una Orden de Compra"
-
-#. module: siscop
-#: model:ir.module.category,name:siscop.module_siscop_category
-msgid " Purchases UNL "
-msgstr "Compras UNL"
-
-#. module: siscop
-#: field:siscop.item_budget,balance:0
-msgid "Balance"
-msgstr "Saldo"
-
-#. module: siscop
-#: view:purchase.order:0
-msgid "True"
-msgstr ""
-
-
-
-
-#  ML Overriden translations for other implicated modules 
-#. module: purchase
-#: model:ir.actions.act_window,name:purchase.purchase_rfq
-#: model:ir.ui.menu,name:purchase.menu_purchase_rfq
-#: view:purchase.order:0
-#: view:purchase.report:0
-msgid "Quotations"
-msgstr "Solicitudes"
-
-#. module: purchase
-#: field:purchase.order.line,product_uom:0
-msgid "Product Unit of Measure"
-msgstr "Unidad de medida"
-
-#. module: purchase
-#: report:purchase.order:0
-#: field:purchase.order.line,price_unit:0
-msgid "Unit Price"
-msgstr "Precio Unitario"
-
-
-#. module: purchase
-#: code:addons/purchase/purchase.py:1167
-#, python-format
-msgid "PO: %s"
-msgstr "%s"

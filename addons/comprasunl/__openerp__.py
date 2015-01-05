@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 {
     'name': 'COMPRAS-UNL',
@@ -26,11 +27,13 @@
 	'data/res.users.csv',
         'data/hr.department.csv',
         'data/hr.employee.csv',
+        'product_view.xml',
         'hr_view.xml',
         'purchase_view.xml',
         'purchase_workflow.xml',
         'purchase_report_actions.xml',
-        'report_purchaseorder_unl_es.xml',
+        'report_header.xml',
+        'report_purchaseorder_unl.xml',
     ],
     'demo': [
         'data/products_part.csv',
