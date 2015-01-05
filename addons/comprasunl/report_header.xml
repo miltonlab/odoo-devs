@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <template id="report_header_custom" inherit_id="report.external_layout_header">
+      <xpath expr="//div[@class='header']" position="replace">
+        <div class ="header">
+	  <table>
+	    <tr>
+	      <td> 
+		<img src="/comprasunl/static/img/logounl.png" 
+		     style="width: 75px; height: 75px;"/> 
+	      </td>
+	      <td> 
+		<h3> Universidad Nacional de Loja </h3>  
+	      </td>
+	    </tr>
+	  </table>
+        </div>
+      </xpath>
+    </template>
+  </data>
+</openerp>
