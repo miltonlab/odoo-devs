@@ -42,6 +42,16 @@ class purchase_order_line_siscop(osv.osv):
         return super(purchase_order_line_siscop, self).create(
             cr, uid, vals, context)     
 
+    def onchange_product_id(self, cr, uid, ids, pricelist_id, product_id, qty, uom_id,partner_id, date_order=False, fiscal_position_id=False, date_planned=False, name=False, price_unit=False, state='draft', context=None):
+        """
+        Override onchange handler of product_id.
+        """
+        res = super(purchase_order_line_siscop, self).onchange_product_id(cr, uid, ids, pricelist_id, product_id, qty, uom_id,partner_id, date_order=False, fiscal_position_id=False, date_planned=False, name=False, price_unit=False, state='draft', context=None)
+        # Empty description order line
+        print '**************', res
+        res['value'].update({'name': ''})
+        return res
+
 
 class purchase_order_siscop(osv.osv):
     _name = 'purchase.order'
@@ -155,5 +165,34 @@ class item_budget(osv.osv):
         'balance' : fields.float('Balance', required=False)
     }
 
-#purchase_order_line()
-#purchase_order_siscop()
+class product_product(osv.osv):
+    _name = 'product.product' 
+    _inherit = 'product.product'
+    #_rec_name = 'default_code'
+
+    # def name_get(self, cr, uid, ids, context=None):
+    #     return_val = super(product_product, self).name_get(cr, uid, ids, context=context)
+    #     res = []
+    #     def _name_get(d):
+    #         name = d.get('name','')
+    #         name = name + ' - %s' % (d['variants'],)
+    #         return (d['id'], name)
+    #     for product in self.browse(cr, uid, ids, context=context):
+    #         res.append((product.id, (product.name)))
+    #     return res or return_val
+
+    
+    def name_get(self, cr, uid, ids, context={}):
+        """
+        Change the presentation for Products at View
+        """
+        if context is None:
+            context = {}
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        if not len(ids):
+            return []
+        res=[]
+        for product in self.browse(cr, uid, ids,context=context):
+            res.append((product.id, product.default_code))    
+        return res

@@ -13,12 +13,15 @@
 	<button name="wkf_send_rfq" position="attributes">
 	  <attribute name='states'>draft,sent,approved,done</attribute>
 	  <attribute name='invisible'>1</attribute>
-	</button>
-	
+	</button>	
 	<!-- Hide button view_invoice -->
 	<button name="view_invoice" position="attributes">
 	  <attribute name='invisible'>1</attribute> 
 	</button>
+	<!-- TODO: Conditional show confirm purchase-->
+	<!--button name="purchase_confirm" position="attributes">
+	  <attribute name='groups'>siscop.group_siscop_manager</attribute> 
+	</button-->
 	<!-- Showing only selected status -->
 	<field name="state" position="attributes">
 	  <attribute name='statusbar_visible'>draf,approved,done</attribute> 

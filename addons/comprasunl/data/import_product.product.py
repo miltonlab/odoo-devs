@@ -25,38 +25,6 @@ def main():
     # Category creation
     category = {'name': 'Catálogo de Compras Públicas', 'parent_id': 1, 'active': True,}
     category_id = sock.execute(DBNAME, uid, PWD, 'product.category', 'create', category)
-        
-    #load categories first
-    # filename = "data/product.product.csv"
-    # reader = csv.reader(open(filename,"rb"))
-    # for row in reader:
-    #     category = {
-    #         'name': row[1],
-    #         'active': True,
-    #     }
-    #     category_id = sock.execute(DBNAME, uid, PWD, 'res.partner.category', 'create', category)
-    #     print category_id
-    #     print "End categories load"
-        
-    # filename = "product.product.csv"
-    # reader = csv.reader(open(filename,"rb"))
-    # for row in reader:
-    #     product_template = {
-    #         'name' : row[2].strip(),
-    #         'supply_method':'produce',
-    #         'standard_price':1,
-    #         'mes_type':'fixed',
-    #         'uom_id':1,
-    #         'uom_po_id':1,
-    #         'type':'product',
-    #         'procure_method':'make_to_stock',
-    #         'cost_method':'standard',
-    #         'categ_id':1,
-    #         'categ_id':1,            
-    #     }
-    #     template_id = sock.execute(DBNAME, uid, PWD, 'product.template', 'create', product_template)
-    #     print template_id
-
     # Product creation
     filename = "product.product.csv"
     #filename = "product.product.test.csv"

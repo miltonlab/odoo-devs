@@ -5,7 +5,8 @@
     <!-- Purchase Order Report customization -->_
 
     <!-- <template t-name="comprasunl.report_purchaseorder_unl"  -->
-    <template t-name="comprasunl.report_purchaseorder_unl" id="report_purchaseorder_unl" inherit_id="purchase.report_purchaseorder">
+    <!--template t-name="comprasunl.report_purchaseorder_unl" id="report_purchaseorder_unl" inherit_id="purchase.report_purchaseorder"-->
+    <template t-name="comprasunl.report_purchaseorder_unl" inherit_id="purchase.report_purchaseorder">
 
       <!-- <t t-call="report.html_container"> -->
 			

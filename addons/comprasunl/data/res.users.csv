@@ -1,4 +1,4 @@
 "id","login","name","active","email","company_id/id","tz","lang","groups_id/id","password"
 "res_user_1","mpalacios","Milton Palacios","True","milton.palacios@unl.edu.ec","base.main_company","America/Guayaquil","es_EC","base.group_user,base.group_hr_user,group_siscop_user","mpalacios"
-"res_user_2","bpenarreta","Byron Peñarreta","True","bpenarreta@unl.edu.ec","base.main_company","America/Guayaquil","es_EC","base.group_user,base.group_hr_user,group_siscop_user","bpenarreta"
+"res_user_2","bpenarreta","Byron Peñarreta","True","bpenarreta@unl.edu.ec","base.main_company","America/Guayaquil","es_EC","base.group_user,base.group_hr_user,group_siscop_manager","bpenarreta"
 "res_user_3","jvivar","José Vivar","True","jose.vivar@unl.edu.ec","base.main_company","America/Guayaquil","es_EC","base.group_user,base.group_hr_user,group_siscop_user","jvivar"
